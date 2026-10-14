@@ -1,11 +1,13 @@
+import org.example.DeliverooFalcariException;
+
 import static java.lang.IO.println;
 
 void main()
 {
     try {
         F();
-    } catch (Exception e) {
-        println("Errore: " + e + "\nStackTrace: " + Arrays.toString(e.getStackTrace()));
+    } catch (DeliverooFalcariException e) {
+        println("Errore: " + e + "\nStackTrace: " + Arrays.toString(e.getStackTrace()) + "\nStatus Code: " + e.getStatusCode());
     }
 
     // stacktrace: allora, sotto lo stack ( alla base ), mettiamo il Main
@@ -22,12 +24,12 @@ void main()
 
 }
 
-private void F() throws Exception
+private void F() throws DeliverooFalcariException
 {
     G();
 }
 
-private void G() throws Exception
+private void G() throws DeliverooFalcariException
 {
     H();
     L();
@@ -38,7 +40,8 @@ private void H()
     return;
 }
 
-private void L() throws Exception // o la propago
+private void L() throws DeliverooFalcariException // o la propago
 {
-    throw new Exception("Eccezione lanciata in L"); // o faccio il try catch
+    //throw new Exception("Eccezione lanciata in L"); // o faccio il try catch
+    throw new DeliverooFalcariException("gatto", 10);
 }
