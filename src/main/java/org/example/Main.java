@@ -5,7 +5,7 @@ void main()
     try {
         F();
     } catch (Exception e) {
-        println("Errore: " + e);
+        println("Errore: " + e + "\nStackTrace: " + Arrays.toString(e.getStackTrace()));
     }
 
     // stacktrace: allora, sotto lo stack ( alla base ), mettiamo il Main
